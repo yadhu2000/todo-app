@@ -1,0 +1,89 @@
+<style>
+.form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 25px 30px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.form-container h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form p {
+    margin-bottom: 18px;
+}
+
+form label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    background: #fafafa;
+    transition: border .2s ease, background .2s ease;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #4a9eff;
+    background: #fff;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #4a9eff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background .2s ease;
+}
+
+button:hover {
+    background: #2f84e6;
+}
+</style>
+<a href="javascript:history.back()" 
+   style="
+      display:inline-block;
+      padding:8px 14px;
+      background:#555;
+      color:white;
+      text-decoration:none;
+      border-radius:6px;
+      font-size:14px;
+      margin-bottom:15px;
+   ">
+   ← Back
+</a>
+
+<div class="form-container">
+
+    <h2>Save</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
+</div>

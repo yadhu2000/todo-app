@@ -1,0 +1,122 @@
+<style>
+/* Container */
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px 30px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.header h2 {
+    font-size: 28px;
+    color: #333;
+    margin: 0;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+}
+
+/* Primary button */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+}
+
+/* Logout button */
+.btn-logout {
+    background-color: #ff4747;
+    color: #fff;
+}
+
+.btn-logout:hover {
+    background-color: #e63d3d;
+}
+
+/* Delete button */
+.btn-delete {
+    background-color: #ff4747;
+    color: white;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+.btn-delete:hover {
+    background-color: #e63d3d;
+}
+
+/* Task List */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f7f7f7;
+    padding: 14px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background .2s ease;
+}
+
+.task-item:hover {
+    background: #ececec;
+}
+
+/* Task title */
+.task-title {
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+}
+
+.task-title:hover {
+    color: #007bff;
+}
+</style>
+
+<div class="container">
+
+    <div class="header">
+        <h2>Your Tasks</h2>
+        <a href="{% url 'logout' %}" class="btn btn-logout">Logout</a>
+    </div>
+
+    <a href="/heading/create/" class="btn btn-primary">+ Create New Task</a>
+
+    <ul class="task-list">
+        {% for h in headings %}
+        <li class="task-item">
+            <a href="/heading/{{ h.id }}/" class="task-title">{{ h.title }}</a>
+
+            <a href="/heading/{{ h.id }}/delete/" class="btn btn-delete">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>

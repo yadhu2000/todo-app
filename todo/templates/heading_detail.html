@@ -1,0 +1,152 @@
+<style>
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 25px 30px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.add-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+.add-btn:hover {
+    background: #0069d9;
+}
+
+h3 {
+    font-size: 22px;
+    margin-top: 30px;
+    color: #444;
+}
+
+/* List Styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background: #f7f7f7;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background .2s ease;
+}
+
+li:hover {
+    background: #ececec;
+}
+
+/* Task description */
+.task-text {
+    font-size: 18px;
+    margin-right: auto;
+    color: #333;
+}
+
+/* Buttons */
+.btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-decoration: none;
+    margin-left: 8px;
+}
+
+.btn-edit {
+    background: #4a9eff;
+    color: white;
+}
+.btn-edit:hover {
+    background: #2f84e6;
+}
+
+.btn-delete {
+    background: #ff4747;
+    color: white;
+}
+.btn-delete:hover {
+    background: #e63d3d;
+}
+
+.btn-complete {
+    background: #27ae60;
+    color: white;
+}
+.btn-complete:hover {
+    background: #1e8c4c;
+}
+</style>
+<a href="javascript:history.back()" 
+   style="
+      display:inline-block;
+      padding:8px 14px;
+      background:#555;
+      color:white;
+      text-decoration:none;
+      border-radius:6px;
+      font-size:14px;
+      margin-bottom:15px;
+   ">
+   ← Back
+</a>
+
+<div class="container">
+
+    <h2>{{ heading.title }}</h2>
+
+    <a href="/todo/{{ heading.id }}/create/" class="add-btn">+ Add To-Do</a>
+
+    <!-- Pending Tasks -->
+    <h3>Pending Tasks</h3>
+    <ul>
+      {% for item in items %}
+        {% if not item.completed %}
+        <li>
+          <span class="task-text">{{ item.description }}</span>
+          <div>
+            <a href="/todo/{{ item.id }}/edit/" class="btn btn-edit">Edit</a>
+            <a href="/todo/{{ item.id }}/delete/" class="btn btn-delete">Delete</a>
+            <a href="/todo/{{ item.id }}/complete/" class="btn btn-complete">Complete</a>
+          </div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <!-- Completed Tasks -->
+    <h3>Completed Tasks</h3>
+    <ul>
+      {% for item in items %}
+        {% if item.completed %}
+        <li>
+          <span class="task-text"><s>{{ item.description }}</s></span>
+          <div>
+            <a href="/todo/{{ item.id }}/edit/" class="btn btn-edit">Edit</a>
+            <a href="/todo/{{ item.id }}/delete/" class="btn btn-delete">Delete</a>
+          </div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+</div>
