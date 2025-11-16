@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+venv/
+env/
+.venv/
+todoAppEnv/
+
+# Django
+db.sqlite3
+media/
+staticfiles/
+static/
+*.log
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+*.env
+
+# Pip files
+pip-log.txt
+
+# Migrations (OPTIONAL: only if you want to ignore generated migration files)
+# **Uncomment below if you want this**
+# */migrations/*
+# !*/migrations/__init__.py
